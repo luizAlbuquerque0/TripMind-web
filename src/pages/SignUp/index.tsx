@@ -3,12 +3,11 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { useSignUpController } from "./useSignUpController";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/FloatingLabelInput";
 
 export function SignUp() {
   const { form, handleSubmit } = useSignUpController();
@@ -24,7 +23,11 @@ export function SignUp() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Seu nome" {...field} />
+                  <Input
+                    placeholder="Seu nome"
+                    {...field}
+                    error={!!form.formState.errors.name}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -36,7 +39,11 @@ export function SignUp() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} />
+                  <Input
+                    placeholder="seu@email.com"
+                    {...field}
+                    error={!!form.formState.errors.email}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -48,7 +55,12 @@ export function SignUp() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="******" type="password" {...field} />
+                  <Input
+                    placeholder="Escolha sua senha"
+                    type="password"
+                    error={!!form.formState.errors.password}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -60,7 +72,12 @@ export function SignUp() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="******" type="password" {...field} />
+                  <Input
+                    placeholder="Confirme sua senha"
+                    type="password"
+                    {...field}
+                    error={!!form.formState.errors.confirmPassword}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
